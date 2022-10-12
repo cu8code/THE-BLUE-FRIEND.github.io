@@ -11,16 +11,33 @@ function r(min,max)
 window.addEventListener("keyup",function(event)
 {
     fl=true;
-    if(event.code=="ArrowLeft")
-    up();
-    else if(event.code=="ArrowUp")
-    left();
-    else if(event.code=="ArrowRight")
-    down();
-    else if(event.code=="ArrowDown")
-    right();
+    var c=b;
+    if(event.code=="ArrowUp"||event.code=="KeyW"||event.code=="Numpad8")
+    {
+        up();
+        if(c!=b)
+        document.getElementById("label").innerText="Moved up";
+    }
+    else if(event.code=="ArrowLeft"||event.code=="KeyA"||event.code=="Numpad4")
+    {
+        left();
+        if(c!=b)
+        document.getElementById("label").innerText="Moved left";
+    }
+    else if(event.code=="ArrowDown"||event.code=="KeyS"||event.code=="Numpad2")
+    {
+        down();
+        if(c!=b)
+        document.getElementById("label").innerText="Moved down";
+    }
+    else if(event.code=="ArrowRight"||event.code=="KeyD"||event.code=="Numpad6")
+    {
+        right();
+        if(c!=b)
+        document.getElementById("label").innerText="Moved right";
+    }
     if(event.code=="KeyU")
-    if(checkequalboard(a,b))
+    if(a==b)
     document.getElementById("label").innerText="No more undo available";
     else
     {
@@ -30,17 +47,19 @@ window.addEventListener("keyup",function(event)
         a=copyboard(b);
         choice=false;
     }
-    if(!checkequalboard(a,b) && !fl)
+    if(c!=b && !fl)
     generate();
     display();
     flag=0;
-    if(checkwin(a,win) && flag==0)
+    if(checkwin() && win==Math.pow(2,16) && flag==0)
+    document.getElementById("label").innerText="Congratulations for fully completing the game! "+win+" is the last tile you can reach in this game. Hope you had great enjoyment while playing my game :D";
+    else if(checkwin() && flag==0)
     {
         document.getElementById("label").innerText="Congratulations for reaching tile "+win+"! You can continue playing to reach even higher tiles. "+(win*2)+" anyone?";
         win+=win;
         flag=1;
     }
-    else if(checklose())
+    else if(checklose() && c!=b)
     {
         document.getElementById("label").innerText="Sorry, game is over. You can undo though";
         choice=true;
@@ -54,14 +73,6 @@ function copyboard(a)
     for(var j=0;j<4;j++)
     b[i][j]=a[i][j];
     return b;
-}
-function checkequalboard(a,b)
-{
-    for(var i=0;i<4;i++)
-    for(var j=0;j<4;j++)
-    if(b[i][j]!=a[i][j])
-    return false;
-    return true;
 }
 function generate()
 {
@@ -81,10 +92,46 @@ function display()
 {
     for(var i=0;i<4;i++)
     for(var j=0;j<4;j++)
-    if(a[i][j]==0)
-    document.getElementById(`${i}${j}`).innerText=``;
-    else
-    document.getElementById(`${i}${j}`).innerText=`${a[i][j]}`;
+    {
+        if(a[i][j]==0)
+        document.getElementById(`${i}${j}`).innerText=``;
+        else
+        document.getElementById(`${i}${j}`).innerText=`${a[i][j]}`;
+        if(a[i][j]==2)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,255,204)";
+        else if(a[i][j]==4)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,255,153)";
+        else if(a[i][j]==8)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,255,102)";
+        else if(a[i][j]==16)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,255,51)";
+        else if(a[i][j]==32)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,230,0)";
+        else if(a[i][j]==64)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,205,0)";
+        else if(a[i][j]==128)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,162,0)";
+        else if(a[i][j]==256)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,128,0)";
+        else if(a[i][j]==512)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,94,0)";
+        else if(a[i][j]==1024)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,77,0)";
+        else if(a[i][j]==2048)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,43,0)";
+        else if(a[i][j]==4096)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(204,0,0)";
+        else if(a[i][j]==8192)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(153,0,0)";
+        else if(a[i][j]==8192*2)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(135,0,0)";
+        else if(a[i][j]==8192*4)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(120,0,0)";
+        else if(a[i][j]==8192*8)
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(105,0,0)";
+        else
+        document.getElementById(`${i}${j}`).style.backgroundColor="rgb(255,255,255)";
+    }
     console.log("00");
 }
 function checklose()
@@ -108,7 +155,7 @@ function checklose()
     right();
     return lose;
 }
-function checkwin(a,win)
+function checkwin()
 {
     for(var i=0;i<4;i++)
     for(var j=0;j<4;j++)
@@ -258,10 +305,18 @@ function undo()
     b=copyboard(a);
     fl=false;
 }
-function main()
+/*function lol()
+{
+    var c=2;
+    for(var i=0;i<4;i++)
+    for(var j=0;j<4;j++,c*=2)
+    a[i][j]=c;
+}*/
+function My2048main()
 {
     generate();
     generate();
+    //lol();
     b=copyboard(a);
     display();
     //console.log("Main");

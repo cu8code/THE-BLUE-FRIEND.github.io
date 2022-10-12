@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<matrix>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Games</title>
+    <title>The 2048</title>
     <link href="My2048.css" rel="stylesheet"></link>
-</head>
+</matrix>
 
-<body onload="main()">
-    <div id="label"></div>
-    <div id="a" class="head">
-        <div id="00" class="element"></div>
-        <div id="01" class="element"></div>
-        <div id="02" class="element"></div>
-        <div id="03" class="element"></div>
+<body onload="My2048main()">
+    <div id="label" class="label"></div>
+    <div id="a">
+        <div id="00" class="matrix"></div>
+        <div id="10" class="matrix"></div>
+        <div id="20" class="matrix"></div>
+        <div id="30" class="matrix"></div>
     </div>
-    <div id="b" class="head">
-        <div id="10" class="element"></div>
-        <div id="11" class="element"></div>
-        <div id="12" class="element"></div>
-        <div id="13" class="element"></div>
+    <div id="b">
+        <div id="01" class="matrix"></div>
+        <div id="11" class="matrix"></div>
+        <div id="21" class="matrix"></div>
+        <div id="31" class="matrix"></div>
     </div>
-    <div id="c" class="head">
-        <div id="20" class="element"></div>
-        <div id="21" class="element"></div>
-        <div id="22" class="element"></div>
-        <div id="23" class="element"></div>
+    <div id="c">
+        <div id="02" class="matrix"></div>
+        <div id="12" class="matrix"></div>
+        <div id="22" class="matrix"></div>
+        <div id="32" class="matrix"></div>
     </div>
-    <div id="d" class="head">
-        <div id="30" class="element"></div>
-        <div id="31" class="element"></div>
-        <div id="32" class="element"></div>
-        <div id="33" class="element"></div>
+    <div id="d">
+        <div id="03" class="matrix"></div>
+        <div id="13" class="matrix"></div>
+        <div id="23" class="matrix"></div>
+        <div id="33" class="matrix"></div>
     </div>
 </body>
 <script src="My2048.js"></script>
