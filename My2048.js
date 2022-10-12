@@ -1,3 +1,8 @@
+// const n=document.getElementById("00")
+// n.onclick=function()
+// {
+//     console.log("00")
+// }
 var a=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],b=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],win=2048,flag=0,choice=false,fl=false,lose=false;
 function r(min,max)
 {
