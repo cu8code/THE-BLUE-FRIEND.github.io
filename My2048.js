@@ -1,8 +1,3 @@
-// const n=document.getElementById("00")
-// n.onclick=function()
-// {
-//     console.log("00")
-// }
 var a=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],b=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],win=2048,flag=0,choice=false,fl=false,lose=false;
 function r(min,max)
 {
@@ -44,7 +39,7 @@ window.addEventListener("keyup",function(event)
         document.getElementById("label").innerText="Undo done";
         if(flag==1)
         win/=2;
-        a=copyboard(b);
+        a=b;
         choice=false;
     }
     if(c!=b && !fl)
@@ -317,7 +312,6 @@ function My2048main()
     generate();
     generate();
     //lol();
-    b=copyboard(a);
+    b=a;
     display();
-    //console.log("Main");
 }

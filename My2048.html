@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 2048</title>
+    <link href="My2048.css" rel="stylesheet"></link>
+</head>
+
+<body onload="My2048main()" style="background:rgb(255, 255, 230);">
+    <ul id="menubar"><link href="index.css" rel="stylesheet"></link>
+        <li>Tictactoe</li>
+        <li>Sudoku</li>
+        <li>Maze</li>
+        <li><a href="My2048.html">2048</a></li>
+        <li>Chess</li>
+    </ul>
+    <div id="label" class="label"></div>
+    <table class="board">
+        <tr>
+            <td id="00" class="matrix"></td>
+            <td id="01" class="matrix"></td>
+            <td id="02" class="matrix"></td>
+            <td id="03" class="matrix"></td>
+        </tr>
+        <tr>
+            <td id="10" class="matrix"></td>
+            <td id="11" class="matrix"></td>
+            <td id="12" class="matrix"></td>
+            <td id="13" class="matrix"></td>
+        </tr>
+        <tr>
+            <td id="20" class="matrix"></td>
+            <td id="21" class="matrix"></td>
+            <td id="22" class="matrix"></td>
+            <td id="23" class="matrix"></td>
+        </tr>
+        <tr>
+            <td id="30" class="matrix"></td>
+            <td id="31" class="matrix"></td>
+            <td id="32" class="matrix"></td>
+            <td id="33" class="matrix"></td>
+        </tr>
+    </table>
+</body>
+<script src="My2048.js"></script>
+
+</html>
